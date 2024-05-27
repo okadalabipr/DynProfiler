@@ -203,7 +203,7 @@ def train(data, outdir, labels, trn_ind, val_ind, fold=None, **kwargs):
                 break
 
     # save training history
-    np.save(outdir.joinpath(f"train_log_{model_name}_seed{seed}_fold{fold}"), np.array(loss_log))
+    # np.save(outdir.joinpath(f"train_log_{model_name}_seed{seed}_fold{fold}"), np.array(loss_log))
     return None
 
 
