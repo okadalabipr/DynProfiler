@@ -5,6 +5,6 @@ lr: 1e-4
 batch_size: 16
 num_workers: 4
 n_splits: 5 # necessary for dynpro.interpret (default: 3)
-pretrained_path: "/content/drive/MyDrive/NODE/reproduce_Figs/_1DCNN_SimSiam_seed10_epochs200.pth" # necessary for dynpro.interpret
+pretrained_path: "_1DCNN_SimSiam_seed10_epochs200.pth" # necessary for dynpro.interpret
 fix_base: true # necessary for dynpro.interpret (default: true)
 max_patient: 10 # necessary for dynpro.interpret or dynpro.train (default: 3)
