@@ -1,0 +1,10 @@
+sampling_aug: true
+sampling_aug_prob: 1.0
+noise_aug: false
+noise_aug_prob: 0.
+shift_aug: false
+shift_aug_prob: 0.
+mask_aug: false
+mask_aug_prob: 0.
+flip_aug: false
+flip_aug_prob: 0.
