@@ -60,3 +60,8 @@ labels = np.load("data/inputs/labels.npy")
 ## Run
 dynpro.interpret({"mean": inp_mean}, outdir, labels,
                 **train_params, **model_params, **dataset_params)
+```
+
+## Fig2
+- Reproduction codes for Fig. 2
+- Large files, such as input simulated dynamics and model weights, are not stored here. If needed, please contact the author.
