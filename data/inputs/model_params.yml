@@ -1,4 +1,4 @@
 name: "1DCNN" # 1DCNN, LSTM, GRU, RNN
-emb_size: 1024
+emb_size: 8
 hidden_size: null # if None int(emb_size // 2)
 num_layers: null # for RNN, LSTM, GRU

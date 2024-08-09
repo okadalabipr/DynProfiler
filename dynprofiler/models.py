@@ -86,7 +86,7 @@ class CNN1d(nn.Module):
                 ))
         self.cnn_blocks = cnn_blocks
 
-        self.predictor = nn.Linear(1024, 1024)
+        self.predictor = nn.Linear(self.emb_size, self.emb_size)
 
     def projector(self, x):
         for block in self.cnn_blocks:

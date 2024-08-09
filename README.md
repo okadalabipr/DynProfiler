@@ -8,7 +8,7 @@ This is the repository of the code for DynProfiler: A Python package to analyze 
 
 ## Usage
 ```bash
-git clone http://
+git clone https://github.com/okadalabipr/DynProfiler.git
 ```
 Please set the path so that this package can be imported.  
 
@@ -61,6 +61,13 @@ labels = np.load("data/inputs/labels.npy")
 dynpro.interpret({"mean": inp_mean}, outdir, labels,
                 **train_params, **model_params, **dataset_params)
 ```
+
+## Tutorial
+Tutorial Jupyter Notebook is provided as `Tutorial.ipynb`
+This includes:
+1. Embed the dynamics
+2. Perform Classification from the dynamics
+3. Extracting important dynamics
 
 ## Fig2
 - Reproduction codes for Fig. 2

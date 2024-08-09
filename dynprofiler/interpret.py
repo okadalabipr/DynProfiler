@@ -120,7 +120,8 @@ def interpret(data, outdir, labels, **kwargs):
     model.to(device)
     model.eval()
 
-    
+    outlier_perc = 2
+
     if task == "binary":
         attrs_ave_results = {"1": np.zeros(shape=(in_feat, seq_len))}
     else:
@@ -138,19 +139,23 @@ def interpret(data, outdir, labels, **kwargs):
             isPositive = np.where(fold_labels == 1)[0]
             attrs = dl.attribute(_x, target=0).detach().to("cpu").numpy()
             attrs = attrs[isPositive].mean(axis=0)
+
+            threshold = _cumulative_sum_threshold(np.abs(attrs), 100 - outlier_perc)
+            attrs = _normalize_scale(attrs, threshold)
+
             attrs_ave_results["1"] += attrs / n_splits
         else:
             for i in range(n_classes):
                 ind = np.where(fold_labels == i)[0]
                 attrs = dl.attribute(_x[ind], target=i).detach().to("cpu").numpy()
                 attrs = attrs.mean(axis=0)
+
+                threshold = _cumulative_sum_threshold(np.abs(attrs), 100 - outlier_perc)
+                attrs = _normalize_scale(attrs, threshold)
+
                 attrs_ave_results[f"{i}"] += attrs / n_splits
-    
-    outlier_perc = 2
 
     for k, v in attrs_ave_results.items():
-        threshold = _cumulative_sum_threshold(np.abs(v), 100 - outlier_perc)
-        v = _normalize_scale(v, threshold)
         np.save(outdir.joinpath(f'{prefix}_{model_name}_seed{seed}_attribution_class{k}'), v)
     
     return None
