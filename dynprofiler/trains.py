@@ -132,6 +132,7 @@ def train(data, outdir, labels, trn_ind, val_ind, fold=None, **kwargs):
         inp_kwargs = {k: v for k, v in kwargs.items() if k not in ["in_feat", "emb_size"]}
         base_model = VanillaRNN(in_feat, emb_size, **inp_kwargs)
     
+    seed_everything(seed)
     model = SimSiam(base_model)
     if pretrained_path is not None:
         model.load_state_dict(torch.load(pretrained_path, map_location="cpu"))
