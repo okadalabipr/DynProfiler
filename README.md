@@ -63,7 +63,7 @@ dynpro.interpret({"mean": inp_mean}, outdir, labels,
 ```
 
 ## Tutorial
-Tutorial Jupyter Notebook is provided as `Tutorial.ipynb` (You can run in  [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/?hl=en) )  
+Tutorial Jupyter Notebook is provided as [`Tutorial.ipynb`](Tutorial.ipynb) (You can run in  [![Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/?hl=en) )  
 This includes:
 1. Embed the dynamics
 2. Perform Classification from the dynamics
