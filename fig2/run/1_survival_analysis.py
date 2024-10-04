@@ -1,6 +1,7 @@
 #######################
 ### Importing Libraries
 #######################
+import os
 from pathlib import Path
 import warnings
 import numpy as np
@@ -100,6 +101,17 @@ for y in [3, 5, 7]:
     fpr, tpr, thresholds = roc_curve(y_true, y_score)
     auc_score = roc_auc_score(y_true, y_score)
     ax.plot(fpr, tpr, label=f'AUC at {y}-year: {auc_score:.4f}')
+
+    # Save risk labels based on the 7-year survival prediction
+    if y == 7:
+        best_idx = np.argmax((tpr + (1 - fpr)))
+        best_th = thresholds[best_idx]
+        labels = np.where(y_score > best_th, 1, 0)
+
+        risk_labels_path = base_path.joinpath("output", "1_risk_labels.npy")
+        if not os.path.isfile(risk_labels_path):
+            np.save(risk_labels_path, labels)
+            
 ax.plot([0,1], [0,1], linestyle='dashed',c='grey')
 ax.set_xlabel('FPR: False positive rate')
 ax.set_ylabel('TPR: True positive rate')
