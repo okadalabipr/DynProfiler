@@ -106,7 +106,7 @@ for y in [3, 5, 7]:
     if y == 7:
         best_idx = np.argmax((tpr + (1 - fpr)))
         best_th = thresholds[best_idx]
-        labels = np.where(y_score > best_th, 1, 0)
+        labels = np.where(risk_score > best_th, 1, 0)
 
         risk_labels_path = base_path.joinpath("output", "1_risk_labels.npy")
         if not os.path.isfile(risk_labels_path):
